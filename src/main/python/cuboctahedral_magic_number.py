@@ -28,20 +28,20 @@ def plot_magic_number_graph():
         percent_surface.append(float(n * 100.0 / (1.0 * m)))
         percent_bulk.append(float((m - n) * 100.0 / (1.0 * m)))
 
-    plt.scatter(K, M, label = 'Total Number of Atoms (M,K)')
-    plt.scatter(K, N, label = 'Surface Atoms (N,K)')
-    plt.legend(loc = 'best')
+    plt.scatter(K, M, label = 'Total Number of Atoms')
+    plt.scatter(K, N, label = 'Number of Surface Atoms')
+    plt.legend()
     plt.xlabel('K (Number of shells)')
     plt.ylabel('Number of atoms')
-    plt.title('Total and Surface Atoms Count Plot!')
+    plt.title('Total and Surface Atoms Count Plot! (for Cuboctahedral)')
     plt.grid()
     plt.show()
 
     plt.scatter(K, percent_surface, label = '% Surface')
     plt.scatter(K, percent_bulk, label = '% Bulk')
-    plt.legend(loc = 'best')
-    plt.title('% Surface/Bulk Atoms Plot!')
-    plt.xlabel('K (Number of shells)')
+    plt.legend()
+    plt.title('% Surface/Bulk Atoms Plot! (for Cuboctahedral)')
+    plt.xlabel('Particle Size')
     plt.ylabel('% Surface/Bulk atoms')
     plt.grid()
     plt.show()
@@ -49,11 +49,11 @@ def plot_magic_number_graph():
 
 def main():
     print('Welcome!')
-    K = int(input('Enter value of K to get the magic number: '))
+    K = int(input('Enter value of K to get the results: '))
     if K >= 1:
         M = int(calc_magic_number(K))
         N = int(calc_surface_atoms_count(K))
-        print('Magic Number of Atoms = ', M)
+        print('Total Number of Atoms = ', M)
         print('Surface Atoms = ', N)
     else:
         print('Error! Please enter a positive integer value.')
